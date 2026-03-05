@@ -1,28 +1,46 @@
 /* kontejner nebude širší jak 1200px, bude vycentrovaný */
 body > .container {
+    
 }
 
 /* obrázky jsou responzivní */
 .img-responsive {
+    display: block;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 /* panely date a article jsou vedle sebe */
 
 .news-item {
+    display: flex;
 }
 
 /* datum je vystředěno ve čtverci o hraně 116px, mezi měsícem a dnem je "--color-bg-pink" linka, pod dnem je "--category-accent" linka */
 .news-item__date {
+    text-align: center;
+    flex-shrink: 0;
+    border-bottom: 6px solid;
 }
 
 .news-item__date-part--month {
+    border-bottom: 2px solid var(--color-bg-pink);
 }
 
 .news-item__date-part--day {
 }
 
 /* mezi datumem a boxem je modrá tečka (8px) s bílým okrajem (3px) */
+/*chyba-opravit*/
 .news-item::before {
+    color: var(--color-accent2);
+    content: "";
+    margin: -3px;
+    border: 3px solid var(--color-bg-pink);
+    border-radius: 999px;
 } 
 /* všechny boxy s perexem článku jsou stejně široké */
 /* nemělo by se stát, že červená šipka v bílém kroužku překryje text perexu */ 
@@ -55,10 +73,13 @@ body > .container {
 /* barvy kategorií reagují na modifikátory */
 
 .news-item--school {
+    accent-color: var(--color-accent4);
 }
 
 .news-item--engineering {
+    accent-color: var(--color-accent2);
 }
 
 .news-item--success {
+    accent-color: var(--color-accent3);
 }
