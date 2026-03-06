@@ -118,6 +118,7 @@ h2 {
 
 .news-item__content {
     margin: 1rem 0;
+    padding-right: 2.5rem;
 }
 
 .news-item__footer {

@@ -1,85 +1,144 @@
+:root {
+    --color-white: white;
+    --color-hover-title: #333;
+
+    --color-shadow: 210, 219, 255;
+    --color-text: #1D1D1D;
+    --color-text1: #F575AC;
+    --color-text2: #6366F1;
+    --color-text3: #4338CA;
+    --color-text4: #A4A4A4;
+
+    --color-bg-pink: #F9E7F5;
+                        
+    --color-accent1: #D7487C;
+    --color-accent2: #B72F61;
+    --color-accent3: #2279F9;
+    --color-accent4: #73B481;
+    --color-gradient: linear-gradient(180deg, #F77062 0%, #FE5196 100%);
+
+    --category-text: var(--color-accent2);
+    --category-bg: var(--color-bg-pink);
+    --category-accent: var(--color-accent2);
+}
 /* kontejner nebude širší jak 1200px, bude vycentrovaný */
 body > .container {
-    
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 600px;
 }
-
+ 
 /* obrázky jsou responzivní */
 .img-responsive {
-    display: block;
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
+    display: inline-block;
     margin: 0;
     padding: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
-
+ 
 /* panely date a article jsou vedle sebe */
-
+ 
 .news-item {
     display: flex;
+    flex-direction: row; /*nemusí být, protože basic nastavení flex je row*/
 }
-
+ 
 /* datum je vystředěno ve čtverci o hraně 116px, mezi měsícem a dnem je "--color-bg-pink" linka, pod dnem je "--category-accent" linka */
 .news-item__date {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     flex-shrink: 0;
-    border-bottom: 6px solid;
+    order: 1;
 }
-
+ 
 .news-item__date-part--month {
     border-bottom: 2px solid var(--color-bg-pink);
 }
-
+ 
 .news-item__date-part--day {
+    display: flex;
+    justify-content: center;
+    border-bottom: 6px solid var(--category-accent);
+    flex-grow: 1;
 }
-
+ 
 /* mezi datumem a boxem je modrá tečka (8px) s bílým okrajem (3px) */
-/*chyba-opravit*/
 .news-item::before {
-    color: var(--color-accent2);
     content: "";
-    margin: -3px;
-    border: 3px solid var(--color-bg-pink);
+    order: 2;
+    width: 8px;
+    height: 8px;
+    background-color: var(--category-accent);
+    border: 3px solid var(--color-white);
     border-radius: 999px;
-} 
+    flex-shrink: 0;
+    align-self: center;
+    margin: 0 -3px;
+    z-index: 1;
+}
+ 
 /* všechny boxy s perexem článku jsou stejně široké */
-/* nemělo by se stát, že červená šipka v bílém kroužku překryje text perexu */ 
+/* nemělo by se stát, že červená šipka v bílém kroužku překryje text perexu */
 .news-item__article {
+    display: flex;
+    flex-direction: row;
+    padding-right: 2.5rem;
+    order: 3;
+    flex-grow: 1;
+    gap: 1rem;
 }
-
+ 
 .news-item__image-link {
+    flex-shrink: 0;
 }
-
+ 
 .news-item__content {
+    border-color: var(--color-accent1);
 }
-
+ 
+/*idk jestli ma  byt*/
+.news-item__category-link {
+    color: var(--category-text);
+}
+ 
 /* všechny odkazy vizuálně reagují na přejetí myší */
 .news-item__title-link:hover {
+    color: var(--color-hover-title);
 }
-
+ 
 .news-item__category-link:hover {
+    text-decoration: underline;
 }
-
+ 
 .news-item__more-link:hover::after {
+    border-color: var(--color-accent1);
 }
-
-
+ 
+ 
 /* text "více" je prťavý tak, až není viditelný a odkaz "->" po najetí myší se změní barva borderu */
-
 .news-item__more-link {
+    font-size: 0;
 }
-
-
+ 
 /* barvy kategorií reagují na modifikátory */
-
+ 
 .news-item--school {
-    accent-color: var(--color-accent4);
+    --category-accent: var(--color-accent2);
+    --category-text: var(--color-accent2);
 }
-
+ 
 .news-item--engineering {
-    accent-color: var(--color-accent2);
+    --category-accent: var(--color-accent3);
+    --category-text: var(--color-accent3);
 }
-
+ 
 .news-item--success {
-    accent-color: var(--color-accent3);
+    --category-accent: var(--color-accent4);
+    --category-text: var(--color-accent4);
 }
+ 
+ 
+ 
